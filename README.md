@@ -7,12 +7,19 @@ This Smart Parking Assistant aids drivers during parking through audio and visua
 - Install Node.js
 - Install XAMPP for backend server setup
 - In your XAMPP directory, navigate to htdocs and paste the parking_project folder inside
+- Open XAMPP, start Apache and MySQL, then click "Admin" of MySQL
+- In MySQL, create a database and name it "parking"
+- Create a table named "photosensor", and add 3 columns, namely "id", "status", "parking_name"
+- id is INT, status is VARCHAR(50), and parking_name is VARCHAR(50)
+- Make sure AUTO INCREMENT is checked on id column
+- Make sure to set the default value of status to "Vacant" using SQL  
 
 ⚠️ Network Reminder
 
 Ensure that both your ESP32 device and your PC/Laptop are connected to the same local network for proper communication.
 
 ⚙️ Functionality
+
 🅿️ Parking
 
 - "OPEN" – Display shows this when the parking slot is vacant.
