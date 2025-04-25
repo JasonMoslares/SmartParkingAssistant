@@ -1,4 +1,5 @@
-🚗 Smart Parking Assistant
+**🚗 Smart Parking Assistant**
+
 This Smart Parking Assistant aids drivers during parking through audio and visual signals, improving accuracy and safety. It also monitors slot availability in real-time.
 
 📦 Prerequisites
