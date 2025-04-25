@@ -5,7 +5,7 @@
 const int sensor1Pin = 14;
 const int sensor2Pin = 35;
 
-String URL = "http://192.168.135.206/parking_project/test_data.php";
+String URL = "http://192.168.135.206/parking_project/parking_data.php";
 
 const char* ssid = "itel P55 5G";
 const char* password = "pldtwifi";
