@@ -41,8 +41,6 @@ void AssistParking(){ // Assists the driver to park
   int park = analogRead(A0);
   Serial.println(park);
   delay(10);
-  digitalWrite(A4, HIGH); // Turns on LED
-  digitalWrite(A5, HIGH); // Turns on Buzzer
   switch (park) {
   case 971 ... 2000: //This is the range where the driver must stop
     SSDSTOP(); //Displays stop

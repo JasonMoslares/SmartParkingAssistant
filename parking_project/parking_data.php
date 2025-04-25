@@ -2,10 +2,10 @@
 
 $hostname = "localhost";
 $username = "root";
-$password = "Mysql-6045";
-$database = "parking";
+$password = ""; //Leave blank if you don't have any password
+$database = "parking"; //Change to any database name
 
-$conn = mysqli_connect($hostname, $username, $password, $database, 3307);
+$conn = mysqli_connect($hostname, $username, $password, $database, 3307); //3307 is the port number of MySQL in my PC
 
 if(!$conn) {
     die("Connection failed: " . mysqli_connect_error());
