@@ -5,10 +5,10 @@
 const int sensor1Pin = 14;
 const int sensor2Pin = 35;
 
-String URL = "http://192.168.135.206/parking_project/parking_data.php";
+String URL = "http://*insertIPaddress*/parking_project/parking_data.php"; //Open cmd and type ipconfig
 
-const char* ssid = "itel P55 5G";
-const char* password = "pldtwifi";
+const char* ssid = "WIFI NAME";
+const char* password = "WIFI PASSWORD";
 
 int sensor1Value;
 int sensor2Value;
@@ -19,18 +19,6 @@ String status2 = ""; //Status for another sensor
 String postData = "";
 
 void setup() {
-  pinMode(pinA, OUTPUT);
-  pinMode(pinB, OUTPUT);
-  pinMode(pinC, OUTPUT);
-  pinMode(pinD, OUTPUT);
-  pinMode(pinE, OUTPUT);
-  pinMode(pinF, OUTPUT);
-  pinMode(pinG, OUTPUT);
-  pinMode(C1, OUTPUT);
-  pinMode(C2, OUTPUT);
-  pinMode(C3, OUTPUT);
-  pinMode(C4, OUTPUT);
-
   Serial.begin(115200);
   connectWiFi();
 }
