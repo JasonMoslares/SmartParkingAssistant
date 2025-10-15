@@ -346,7 +346,7 @@ void loop() {
   }
 
   if (state != lastState){
-    Serial.println(state);                                                                    // Uses UART to send to ESP32
+    Serial.println(state);                                                                    // Uses UART Serial Communication to send to Esp32
     lastState = state;
   }
 }
