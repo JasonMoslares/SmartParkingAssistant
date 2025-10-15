@@ -1,13 +1,124 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.home-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('https://images.pexels.com/photos/1756957/pexels-photo-1756957.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding: 40px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.form-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('https://images.pexels.com/photos/1756957/pexels-photo-1756957.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding: 40px;
 }
+
+.lot-form{
+  background-color: white;
+  padding: 40px;
+  border-radius: 16px;
+  width: 400px;
+}
+
+.dashboard-title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700; 
+  margin: none;
+}
+
+.dashboard-card{
+  width: 200px;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.dashboard-form {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  max-width: 1125px;
+  width: 100%;
+}
+
+.card-header{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-title {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.createButton{
+  background-color: rgb(40, 167, 69);
+  color: white;
+  border: none;
+  padding: 12px 28px;;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.createButton:hover{
+  background-color: rgb(72, 201, 111);
+  transform: scale(1.08);
+}
+
+.editButton{
+  background-color: rgb(0, 123, 255);
+  text-decoration: none;
+}
+
+.deleteButton{
+  background-color: rgb(220, 53, 69);
+}
+.editButton, .deleteButton {
+  display: inline-flex;           
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-family: inherit;
+  line-height: 1;
+  text-decoration: none;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 8px 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.editButton:hover{
+  background-color: rgb(77, 171, 255);
+  transform: scale(1.05);
+}
+
+.deleteButton:hover{
+  background-color: rgb(255, 99, 99);
+  transform: scale(1.05);
+}
+

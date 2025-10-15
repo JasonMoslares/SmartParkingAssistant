@@ -1,25 +1,22 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 
-//Sensors
-const int sensor1Pin = 14;
-const int sensor2Pin = 35;
+#define RXp2 16
+#define TXp2 17
 
-String URL = "http://*insertIPaddress*/parking_project/parking_data.php"; //Open cmd and type ipconfig
+String URL = "http://192.168.1.9/parking_project/parking_data.php";
 
-const char* ssid = "WIFI NAME";
-const char* password = "WIFI PASSWORD";
+const char* ssid = "PLDTHOMEFIBRX6nyU";
+const char* password = "WPA2-PLDT76sep";
 
-int sensor1Value;
-int sensor2Value;
-
-
-String status1 = "";
-String status2 = ""; //Status for another sensor
+String state = "";                                               // State from Arduino
+String lastState = "";
 String postData = "";
+int id = 1;
 
 void setup() {
   Serial.begin(115200);
+  Serial2.begin(9600, SERIAL_8N1, RXp2, TXp2);
   connectWiFi();
 }
 
@@ -28,26 +25,15 @@ void loop() {
   if(WiFi.status() != WL_CONNECTED) {
     connectWiFi();
   }
-
-  readSensor();
-
-  HTTPClient http;
-  http.begin(URL);
-  http.addHeader("Content-Type", "application/x-www-form-urlencoded"); //helps server understand the type of data being sent
-
-  int httpCode = http.POST(postData);
-  String payload = http.getString(); //response from server
   
-  Serial.print("URL : ");
-  Serial.println(URL);
-  Serial.print("Data : ");
-  Serial.println(postData);
-  Serial.print("httpCode : ");
-  Serial.println(httpCode);
-  Serial.print("payload : ");
-  Serial.println(payload);
-  Serial.println("--------------------------------------------------");
+  if (Serial2.available()) {
+    state = Serial2.readStringUntil('\n');
+    state.trim();
+  }
 
+  updateData();
+
+  Serial.println(state);
 }
 
 void connectWiFi() {
@@ -70,16 +56,29 @@ void connectWiFi() {
   Serial.println(WiFi.localIP());
 }
 
-void readSensor() {
-  sensor1Value = analogRead(sensor1Pin);
-  sensor2Value = analogRead(sensor2Pin);
+void updateData() {
+  if (state.length() > 0 && state != lastState) {
+    lastState = state;
+    postData = "id=" + String(id) + "&status=" + state;
+    sendToPhp();
+  }
+}
 
 
-  status1 = (sensor1Value < 600) ? "Parked" : "Vacant";
-  status2 = (sensor2Value < 600) ? "Parked" : "Vacant";
+void sendToPhp(){
+  if (WiFi.status() == WL_CONNECTED) {
+    HTTPClient http;
+    http.begin(URL);
+    http.addHeader("Content-Type", "application/x-www-form-urlencoded");          // helps server understand the type of data being sent
 
-  postData = "id1=1&status1=" + status1 + "&id2=2&status2=" + status2;
-
-  Serial.printf("Value: %d\n", sensor1Value);
-  Serial.printf("Value: %d\n", sensor2Value);
+    int httpCode = http.POST(postData);
+    String payload = http.getString();                                            // response from server
+  
+    Serial.printf("[Lot %d] Data sent (HTTP %d): %s\n", id, httpCode, payload.c_str());
+    Serial.println("--------------------------------------------------");
+    http.end();
+  }
+  else {
+    Serial.printf("[Lot %d] WiFi not connected. Skipping POST.\n", id);
+  }
 }
