@@ -4,15 +4,15 @@
 #define RXp2 16
 #define TXp2 17
 
-String URL = "http://192.168.1.9/parking_project/parking_data.php";
+String URL = "http://YOUR_IP_ADDRESS/parking_project/parking_data.php";
 
-const char* ssid = "PLDTHOMEFIBRX6nyU";
-const char* password = "WPA2-PLDT76sep";
+const char* ssid = "SSID_NAME";
+const char* password = "SSID_PASSWORD";
 
 String state = "";                                               // State from Arduino
 String lastState = "";
 String postData = "";
-int id = 1;
+int id = 1;                                                      // Replace depending on which Lot
 
 void setup() {
   Serial.begin(115200);
